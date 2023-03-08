@@ -2,3 +2,15 @@
     margin:0px;
     padding:0px;
 }
+@font-face {
+    font-family: 'Bold';
+    src: url('../../src/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Regular';
+    src: url('../../src/fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Regular';
+    src: url('../../src/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+}
