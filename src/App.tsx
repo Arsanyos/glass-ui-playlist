@@ -1,23 +1,21 @@
-import logo from '../src/logo.svg'
-import "./App.css";
+import Card from "./componets/Card";
+import "../src/styles/global.css";
+import background from "../src/img/background.jpg";
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo as unknown as string} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        backgroundImage: `url(${background})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+        filter:'brightness(80%)',
+        height: "100vh",
+        width: "100vw",
+        lineHeight: "40px",
+      }}
+    >
+      <Card></Card>
     </div>
   );
 };
