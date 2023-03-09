@@ -22,7 +22,6 @@ export const MainCardContainer = styled.div`
 export const PlayListContainer = styled.div`
   height: 90%;
   width: 65%;
-  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 18px;
   padding: 15px;
   padding-top: 20px;
@@ -72,6 +71,7 @@ export const TableData = styled.td`
   font-family: "Regular";
   text-align: left;
   color: rgb(255, 255, 255);
+  width: 200px;
 `;
 export const ItemsContainer = styled.div`
   height: 30px;
@@ -80,7 +80,6 @@ export const ItemsContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
-
 `;
 export const ProfilePic = styled.div`
   height: 20px;
@@ -97,12 +96,45 @@ export const CreateButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding:10px;
+  padding: 10px;
 
   :hover {
     transition: ease-in-out 0.3s;
     cursor: pointer;
-    background:#1777CA;
-    border: 1px solid #1777CA;
+    background: #1777ca;
+    border: 1px solid #1777ca;
+  }
+`;
+export const MenuContainer = styled.div`
+  width: 100px;
+  height: 100px;
+  border-radius: 18px;
+  backdrop-filter: blur(25px);
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 265px;
+ margin-left:-38px;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  gap:0.5em;
+`;
+export const MenuItems = styled.button`
+  height: 25px;
+  width: 80px;
+  background: transparent;
+  color: whitesmoke;
+  font-weight: 500;
+  backdrop-filter: blur(55px);
+  background-color: ${(props: { color: string }) => props.color};
+border:none;
+  border-radius: 5px;
+
+  :hover {
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
+    background: ${(props: { color: string }) => props.color};
+    color: white;
   }
 `;
