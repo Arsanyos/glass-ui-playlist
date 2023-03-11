@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import React, { Dispatch, PropsWithChildren, SetStateAction } from "react";
 import {
   Header,
   ItemsContainer,
@@ -10,8 +10,14 @@ import {
 import MusicTable from "./Table/MusicTable";
 interface HeaderProps {
   children?: any;
+  setOpenform: Dispatch<SetStateAction<boolean>>;
+  openForm: boolean;
 }
-const Card: React.FC<PropsWithChildren<HeaderProps>> = ({ children }) => {
+const Card: React.FC<PropsWithChildren<HeaderProps>> = ({
+  children,
+  setOpenform,
+  openForm,
+}) => {
   return (
     <PlayListContainer>
       <Header style={{ marginLeft: "10px" }}>Play List</Header>
@@ -28,8 +34,20 @@ const Card: React.FC<PropsWithChildren<HeaderProps>> = ({ children }) => {
           <ProfilePic />
           <Text style={{ fontSize: "0.8em" }}>madman_lacy . 20 songs</Text>
         </div>
-        <CreateButtonContainer>
-          <Text style={{ fontSize: "30px" }}>+</Text>
+        <CreateButtonContainer
+          onClick={() => {
+            setOpenform(!openForm);
+          }}
+        >
+          <Text
+            style={{
+              fontSize: "30px",
+              rotate: openForm ? "43deg" : "0deg",
+              transition: "0.4s",
+            }}
+          >
+            <p style={{ lineHeight: "0px", background: "red" }}>+</p>
+          </Text>
         </CreateButtonContainer>
       </ItemsContainer>
       <MusicTable />

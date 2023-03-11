@@ -27,10 +27,8 @@ export const PlayListContainer = styled.div`
   padding-top: 20px;
 `;
 export const StatsContainer = styled.div`
-  height: 90%;
+  height: 92%;
   width: 40%;
-  background: blue;
-  opacity: 0.2;
   padding: 10px;
   padding-top: 20px;
   border-radius: 18px;
@@ -54,6 +52,7 @@ export const Text = styled.p`
 `;
 export const Table = styled.table`
   background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(25px);
   border-radius: 8px;
   padding: 10px;
 `;
@@ -113,12 +112,12 @@ export const MenuContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 265px;
- margin-left:-38px;
+  margin-left: -38px;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap:0.5em;
+  gap: 0.5em;
 `;
 export const MenuItems = styled.button`
   height: 25px;
@@ -128,7 +127,7 @@ export const MenuItems = styled.button`
   font-weight: 500;
   backdrop-filter: blur(55px);
   background-color: ${(props: { color: string }) => props.color};
-border:none;
+  border: none;
   border-radius: 5px;
 
   :hover {
@@ -136,5 +135,82 @@ border:none;
     cursor: pointer;
     background: ${(props: { color: string }) => props.color};
     color: white;
+  }
+`;
+export const InputFields = styled.input`
+  height: 20px;
+  outline: 0;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  color: rgb(3, 19, 88, 0.7);
+  border-bottom: 1px solid  rgb(32,197,201,0.8) ;
+  background: transparent;
+  :active {
+    border-bottom: 3px solid white;
+    transition:0.5s;
+  }
+  font-family: Regular;
+`;
+export const InputLable = styled.p`
+  color: rgba(245, 245, 245);
+  font-size: 14.22px;
+  line-height: 2px;
+  margin-bottom: 10px;
+  font-family: Bold;
+`;
+export const FormControl = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  margin-top: 20px;
+  position: relative;
+`;
+export const ErrorDisplay = styled.span`
+  padding: 3px;
+  font-size: 8px;
+  height: 6px;
+  color: crimson;
+  top: 0;
+  position: absolute;
+  top: 21px;
+  left: 210px;
+  margin: 0;
+  padding: 0;
+  font-family: "Regular";
+`;
+export const FormContainer = styled.div`
+  backdrop-filter: blur(25px);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 40px;
+  padding-top: 20px;
+  padding-bottom:20px;
+  margin-top: 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+`;
+export const SaveButton = styled.button`
+  font-family: "Regular";
+  height: 27px;
+  width: 94px;
+  border-radius:8px;
+  border: 1px solid transparent;
+  outline:0;
+  margin-top: 25px;
+  background-color:rgb(110,5,134,0.9);
+  font-size:16px;
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  :hover{
+    cursor:pointer;
+    color:rgb(110,5,134);
+    background:whitesmoke;
+    transition:0.3s;
   }
 `;

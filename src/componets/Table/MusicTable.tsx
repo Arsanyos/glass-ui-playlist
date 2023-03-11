@@ -90,17 +90,18 @@ const MusicTable = () => {
                 setMenuOpen(!menuOpen);
               }}
             >
-              <div hidden={menuOpen} style={{background:"red"}}>
-
-              <MenuContainer>
-                <MenuItems color="rgba(0,255,0,0.4)">Update</MenuItems>
-                <MenuItems color="rgba(220,20,60,0.7)">Delete</MenuItems>
-              </MenuContainer>
-                </div>
-                <div style={{position:'absolute'}}>
-
-              ...
-                </div>
+              <div
+                style={{
+                  background: "red",
+                  display: menuOpen ? "block" : "none",
+                }}
+              >
+                <MenuContainer>
+                  <MenuItems color="rgba(0,255,0,0.4)">Update</MenuItems>
+                  <MenuItems color="rgba(220,20,60,0.7)">Delete</MenuItems>
+                </MenuContainer>
+              </div>
+              <div style={{ position: "absolute" }}>...</div>
             </TableData>
           </TableRow>
         </tbody>

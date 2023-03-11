@@ -6,6 +6,6 @@ interface HeaderProps {
   children?: any;
 }
 const Card: React.FC<PropsWithChildren<HeaderProps>> = ({ children }) => {
-  return <StatsContainer></StatsContainer>;
+  return <StatsContainer>{children}</StatsContainer>;
 };
 export default Card;
