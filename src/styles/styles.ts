@@ -143,7 +143,7 @@ export const InputFields = styled.input`
   border: none;
   padding: 0px;
   margin: 0px;
-  color: rgb(3, 19, 88, 0.7);
+  color: whitesmoke;
   border-bottom: 1px solid  rgb(32,197,201,0.8) ;
   background: transparent;
   :active {
@@ -207,10 +207,14 @@ export const SaveButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  :hover{
+  :hover:enabled{
     cursor:pointer;
     color:rgb(110,5,134);
     background:whitesmoke;
     transition:0.3s;
   }
+  :hover:disabled{
+    cursor:arrow;
+  }
+
 `;

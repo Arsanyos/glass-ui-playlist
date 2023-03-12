@@ -9,6 +9,7 @@ import {
   FormContainer,
   SaveButton,
 } from "../styles/styles";
+import styles from "../styles/common.module.css";
 const Form = () => {
   const handleSubmit = (values: {
     title: string;
@@ -37,7 +38,7 @@ const Form = () => {
           // console.log('asd')
         }}
       >
-        {({ values, errors, touched, handleChange, handleBlur }) => (
+        {({ values, errors, touched, handleChange, handleBlur, resetForm }) => (
           <form>
             <FormContainer>
               <FormControl>
@@ -100,10 +101,18 @@ const Form = () => {
                 />
                 {touched.genre && <ErrorDisplay>{errors.genre}</ErrorDisplay>}
               </FormControl>
+              <>{console.log(Object.keys(errors).length)}</>
               <SaveButton
+
+                className={styles.saveButton}
+                type="submit"
                 disabled={Object.keys(errors).length > 0 ? true : false}
-                onClick={() => {
+                
+                onClick={(e) => {
+                  
+                  e.preventDefault();
                   handleSubmit(values);
+                  resetForm();
                 }}
               >
                 Save
