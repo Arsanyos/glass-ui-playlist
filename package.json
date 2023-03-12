@@ -15,12 +15,14 @@
     "styled-components": "^5.3.8",
     "web-vitals": "^2.1.4",
     "yup": "^1.0.2"
+    
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "tsc",
+    "build": "react-script tsc build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+
   },
   "eslintConfig": {
     "extends": [
