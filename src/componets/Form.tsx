@@ -10,6 +10,14 @@ import {
   SaveButton,
 } from "../styles/styles";
 const Form = () => {
+  const handleSubmit = (values: {
+    title: string;
+    album: string;
+    artist: string;
+    genre: string;
+  }) => {
+    console.log(values);
+  };
   const initialValues = {
     title: "",
     artist: "",
@@ -94,6 +102,9 @@ const Form = () => {
               </FormControl>
               <SaveButton
                 disabled={Object.keys(errors).length > 0 ? true : false}
+                onClick={() => {
+                  handleSubmit(values);
+                }}
               >
                 Save
               </SaveButton>
