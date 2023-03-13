@@ -8,7 +8,23 @@ import {
 } from "../../styles/styles";
 import styles from "../../styles/common.module.css";
 import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+
+
+
 const MusicTable = () => {
+  const [music, setMusic] = useState([]);
+  useEffect(() => {
+    const fetchdata = async () => {
+      const data = await axios.get("http://localhost:5000/Getsong");
+      console.log("pro", data.data);
+      setMusic(data.data);
+
+    };
+
+    fetchdata();
+  }, [])
   const [menuOpen, setMenuOpen] = useState(false);
   const tableHead = [
     {
@@ -24,7 +40,7 @@ const MusicTable = () => {
       id: "3",
     },
     {
-      label: "Duration",
+      label: "Genre",
       id: "4",
     },
     {
@@ -57,12 +73,14 @@ const MusicTable = () => {
           </TableRow>
         </thead>
         <tbody>
+          {music.map((item,index) => {
+            return (
           <TableRow>
             <TableData align="left" scope="row" style={{ width: "5%" }}>
-              1
+                  {index + 1}
             </TableData>
             <TableData style={{ display: "flex", flexDirection: "column" }}>
-              <p style={{ fontWeight: "600" }}>Redemtion Song</p>
+                  <p style={{ fontWeight: "600" }}>{item.Title}</p>
               <p
                 style={{
                   fontSize: ".6em",
@@ -71,11 +89,11 @@ const MusicTable = () => {
                   bottom: "0.7em",
                 }}
               >
-                Dennis Brown
+                    {item.Artist}
               </p>
             </TableData>
-            <TableData>Small Man</TableData>
-            <TableData>4:10</TableData>
+            <TableData>{item.Album}</TableData>
+            <TableData>{item.Genre}</TableData>
             <TableData
               style={{
                 fontSize: "1.5em",
@@ -104,6 +122,8 @@ const MusicTable = () => {
               <div style={{ position: "absolute" }}>...</div>
             </TableData>
           </TableRow>
+            );
+          })}
         </tbody>
       </Table>
     </div>

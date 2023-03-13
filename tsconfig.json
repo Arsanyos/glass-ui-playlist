@@ -1,3 +1,4 @@
+"moduleResolution": "node",
 {
   "compilerOptions": {
     "typeRoots": ["node_modules/yup", "node_modules/@types/yup"],
@@ -21,4 +22,5 @@
     "**/*.cjs"
   ],
   "exclude": [".webpack/**/*", ".vscode/**/*"]
+  
 }
