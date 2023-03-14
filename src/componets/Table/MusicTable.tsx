@@ -33,7 +33,7 @@ const MusicTable = () => {
     // throw new Error("Function not implemented.");
   }
   const Delete = (title: string) => {
-    console.log(title);
+    alert(title);
 
     if (window.confirm("Are you sure that you want to delete that account?")) {
       axios.post("http://localhost:5000/Removesong", {
