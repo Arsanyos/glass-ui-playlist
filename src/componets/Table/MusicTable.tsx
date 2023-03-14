@@ -15,10 +15,7 @@ const MusicTable = () => {
   const current = useRef({
     option: '0',
   });
-  const [musics, setMusics] = useState([])
-  console.log(musics);
-  
-  const [music, setMusic] = useState([
+  const [musics, setMusics] = useState([
     {
       id: "1",
       artist: "50",
@@ -33,7 +30,10 @@ const MusicTable = () => {
       title: "ss",
       genre: "pop",
     },
-  ]);
+  ])
+  console.log(musics);
+  
+ 
 
   function loadData() {
     // throw new Error("Function not implemented.");
@@ -115,7 +115,7 @@ const MusicTable = () => {
                   {index + 1}
                 </TableData>
                 <TableData style={{ display: "flex", flexDirection: "column" }}>
-                  <p style={{ fontWeight: "600" }}>{item.Title}</p>
+                  <p style={{ fontWeight: "600" }}>{item.title}</p>
                   <p
                     style={{
                       fontSize: ".6em",
@@ -124,11 +124,11 @@ const MusicTable = () => {
                       bottom: "0.7em",
                     }}
                   >
-                    {item.Artist}
+                    {item.artist}
                   </p>
                 </TableData>
-                <TableData>{item.Album}</TableData>
-                <TableData>{item.Genre}</TableData>
+                <TableData>{item.album}</TableData>
+                <TableData>{item.genre}</TableData>
 
                 <TableData
                   style={{
@@ -142,14 +142,14 @@ const MusicTable = () => {
                   className={styles.menuItem}
                   onClick={() => {
                     setMenuOpen(!menuOpen);
-                    current.current.option = item._id;
+                    current.current.option = item.id;
                   }}
                 >
                   <div
-                    id={item._id}
+                    id={item.id}
                     style={{
                       display:
-                        menuOpen && current.current.option === item._id
+                        menuOpen && current.current.option === item.id
                           ? "block"
                           : "none",
                     }}
@@ -158,7 +158,7 @@ const MusicTable = () => {
                       <MenuItems color="rgba(0,255,0,0.4)">Update</MenuItems>
                       <MenuItems
                         color="rgba(220,20,60,0.7)"
-                        onClick={() => Delete(item._id)}
+                        onClick={() => Delete(item.id)}
                       >
                         Del
                       </MenuItems>
