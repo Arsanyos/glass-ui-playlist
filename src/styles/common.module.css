@@ -33,3 +33,6 @@
     align-items: center;
    
 }
+.show{
+    display: none;
+}

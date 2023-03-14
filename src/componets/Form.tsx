@@ -17,6 +17,23 @@ const Form = () => {
     artist: string;
     genre: string;
   }) => {
+    fetch("http://localhost:5000/addsong", {
+      method: "POST",
+      // crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+       values
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, "userRegister");
+      });
+    
     console.log(values);
   };
   const initialValues = {
