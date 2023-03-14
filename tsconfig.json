@@ -1,17 +1,23 @@
-"moduleResolution": "node",
 {
   "compilerOptions": {
-    "typeRoots": ["node_modules/yup", "node_modules/@types/yup"],
     "target": "es5",
-    "module": "amd",
-    "noImplicitAny": true,
-    "removeComments": true,
-    "preserveConstEnums": true,
-    "sourceMap": true,
-    "jsx": "react-jsx",
-    "rootDir": "src",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "typeRoots": ["node_modules/yup", "node_modules/@types/yup"]
   },
   "include": [
     "src/custom.d.ts",
@@ -21,6 +27,5 @@
     "**/*.tsx",
     "**/*.cjs"
   ],
-  "exclude": [".webpack/**/*", ".vscode/**/*"]
-  
+  "exclude": [".webpack/**/*", ".vscode/**/*", "node_modules"]
 }

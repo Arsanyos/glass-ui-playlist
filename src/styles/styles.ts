@@ -111,8 +111,8 @@ export const MenuContainer = styled.div`
   backdrop-filter: blur(25px);
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
-  top: 265px;
-  margin-left: -38px;
+  // top: 20px;
+  // margin-left: -38px;
   display: flex;
   flex-direction: column;
   justify-content: center;
