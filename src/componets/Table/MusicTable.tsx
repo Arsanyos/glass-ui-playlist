@@ -26,13 +26,15 @@ const MusicTable = () => {
     fetchdata();
   }, [])
   const Delete = (Title) => {
+    alert(Title);
+    
     if (window.confirm("Are you sure that you want to delete that account?")) {
-      axios.delete("http://localhost:5000/Removesong/", {
-        body: JSON.stringify({
+      axios.post("http://localhost:5000/Removesong", {
+        
           Title
-        }),
+        
       });
-      toast.success("Contact is deleted succesfully");
+      // toast.success("Contact is deleted succesfully");
       setTimeout(() => loadData(), 500);
 
     } else {
@@ -131,7 +133,7 @@ const MusicTable = () => {
                 <MenuContainer>
                   <MenuItems color="rgba(0,255,0,0.4)">Update</MenuItems>
                       <MenuItems color="rgba(220,20,60,0.7)" 
-                      onClick={() => Delete(item.Title)}
+                      onClick={() => Delete(item._id)}
                         >Delete</MenuItems>
                 </MenuContainer>
               </div>
