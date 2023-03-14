@@ -25,7 +25,21 @@ const MusicTable = () => {
 
     fetchdata();
   }, [])
-  const [menuOpen, setMenuOpen] = useState(false);
+  const Delete = (Title) => {
+    if (window.confirm("Are you sure that you want to delete that account?")) {
+      axios.delete("http://localhost:5000/Removesong/", {
+        body: JSON.stringify({
+          Title
+        }),
+      });
+      toast.success("Contact is deleted succesfully");
+      setTimeout(() => loadData(), 500);
+
+    } else {
+    }
+  };
+
+   const [menuOpen, setMenuOpen] = useState(false);
   const tableHead = [
     {
       label: "#",
@@ -116,7 +130,9 @@ const MusicTable = () => {
               >
                 <MenuContainer>
                   <MenuItems color="rgba(0,255,0,0.4)">Update</MenuItems>
-                  <MenuItems color="rgba(220,20,60,0.7)">Delete</MenuItems>
+                      <MenuItems color="rgba(220,20,60,0.7)" 
+                      onClick={() => Delete(item.Title)}
+                        >Delete</MenuItems>
                 </MenuContainer>
               </div>
               <div style={{ position: "absolute" }}>...</div>
