@@ -5,6 +5,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "types": ["@openui5/ts-types-esm"],
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -17,7 +18,11 @@
     "baseUrl": ".",
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "typeRoots": ["node_modules/yup", "node_modules/@types/yup"]
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/yup",
+      "./node_modules/@types/yup",
+    ]
   },
   "include": [
     "src/custom.d.ts",
