@@ -55,6 +55,7 @@ export const Table = styled.table`
   backdrop-filter: blur(25px);
   border-radius: 8px;
   padding: 10px;
+
 `;
 export const TableHead = styled.th`
   font-family: "Regular";
@@ -65,6 +66,7 @@ export const TableHead = styled.th`
 export const TableRow = styled.tr`
   border-radius: 10px;
   width: auto;
+  height:auto;
 `;
 export const TableData = styled.td`
   font-family: "Regular";
@@ -105,14 +107,13 @@ export const CreateButtonContainer = styled.div`
   }
 `;
 export const MenuContainer = styled.div`
-  width: 100px;
+  width: 50px;
   height: 100px;
   border-radius: 18px;
   backdrop-filter: blur(25px);
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
-  // top: 20px;
-  // margin-left: -38px;
+  z-index:1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,7 +122,8 @@ export const MenuContainer = styled.div`
 `;
 export const MenuItems = styled.button`
   height: 25px;
-  width: 80px;
+  width: auto;
+  padding:10px;
   background: transparent;
   color: whitesmoke;
   font-weight: 500;

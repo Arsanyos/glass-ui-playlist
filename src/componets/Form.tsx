@@ -10,37 +10,34 @@ import {
   SaveButton,
 } from "../styles/styles";
 import styles from "../styles/common.module.css";
-const Form = () => {
-  const handleSubmit = (values: {
-    title: string;
-    album: string;
-    artist: string;
-    genre: string;
-  }) => {
-    fetch("http://localhost:5000/addsong", {
-      method: "POST",
-      // crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({
-       values
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data, "userRegister");
+import { useUpdateSongMutation, useAddSongMutation } from "src/redux/music.api";
+import Loading from "./Loading";
+import { useState } from "react";
+export interface formValues {
+  title: string | undefined;
+  album: string | undefined;
+  artist: string | undefined;
+  genre: string | undefined;
+}
+const Form = ({ tobeUpdated }: { tobeUpdated: formValues | undefined }) => {
+
+  const [addMusic, { isLoading }] = useAddSongMutation({});
+
+  const handleSubmit = (values: formValues) => {
+    addMusic(values)
+      .unwrap()
+      .then(() => {
+        alert("Music added successfully");
+      })
+      .catch(() => {
+        alert("Error when adding music");
       });
-    
-    console.log(values);
   };
   const initialValues = {
-    title: "",
-    artist: "",
-    album: "",
-    genre: "",
+    title: tobeUpdated?.title,
+    artist: tobeUpdated?.artist,
+    album: tobeUpdated?.album,
+    genre: tobeUpdated?.genre,
   };
   return (
     <div>
@@ -118,21 +115,18 @@ const Form = () => {
                 />
                 {touched.genre && <ErrorDisplay>{errors.genre}</ErrorDisplay>}
               </FormControl>
-              <>{console.log(Object.keys(errors).length)}</>
-              <SaveButton
 
+              <SaveButton
                 className={styles.saveButton}
                 type="submit"
                 disabled={Object.keys(errors).length > 0 ? true : false}
-                
                 onClick={(e) => {
-                  
                   e.preventDefault();
                   handleSubmit(values);
-                  resetForm();
+                  // resetForm();
                 }}
               >
-                Save
+                {isLoading ? <Loading /> : "Save"}
               </SaveButton>
             </FormContainer>
           </form>

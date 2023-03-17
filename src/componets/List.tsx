@@ -8,16 +8,21 @@ import {
   CreateButtonContainer,
 } from "../styles/styles";
 import MusicTable from "./Table/MusicTable";
+import { useTotalMusicQuery } from "src/redux/music.api";
+import { formValues } from "./Form";
 interface HeaderProps {
   children?: any;
   setOpenform: Dispatch<SetStateAction<boolean>>;
   openForm: boolean;
+  setToBeUpdated:Dispatch<SetStateAction<formValues | undefined>>;
 }
 const Card: React.FC<PropsWithChildren<HeaderProps>> = ({
   children,
   setOpenform,
   openForm,
+  setToBeUpdated
 }) => {
+    // const { data:TotalMusic } = useTotalMusicQuery({});
   return (
     <PlayListContainer>
       <Header style={{ marginLeft: "10px" }}>Play List</Header>
@@ -32,7 +37,7 @@ const Card: React.FC<PropsWithChildren<HeaderProps>> = ({
           }}
         >
           <ProfilePic />
-          <Text style={{ fontSize: "0.8em" }}>madman_lacy . 20 songs</Text>
+          <Text style={{ fontSize: "0.8em" }}>madman_lacy . 20</Text>
         </div>
         <CreateButtonContainer
           onClick={() => {
@@ -50,7 +55,7 @@ const Card: React.FC<PropsWithChildren<HeaderProps>> = ({
           </Text>
         </CreateButtonContainer>
       </ItemsContainer>
-      <MusicTable />
+      <MusicTable setToBeUpdated={setToBeUpdated} />
     </PlayListContainer>
   );
 };
