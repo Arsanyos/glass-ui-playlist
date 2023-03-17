@@ -22,40 +22,52 @@ const Card: React.FC<PropsWithChildren<HeaderProps>> = ({
   openForm,
   setToBeUpdated,
 }) => {
-
   const { data } = useFetchMusicsQuery({});
   return (
     <PlayListContainer>
       <Header style={{ marginLeft: "10px" }}>Play List</Header>
-      <ItemsContainer style={{marginTop:'30px',}}>
+      <ItemsContainer style={{ marginTop: "30px" }}>
         <div
           style={{
             display: "flex",
-            flexDirection:"row",
-            justifyContent: "left",
-            alignItems: "left",
+            flexDirection: "row",
+
+            alignItems: "center",
             height: "20px",
             width: "auto",
-            
-
           }}
         >
           <ProfilePic />
-          <Text style={{ fontSize: "0.8em",marginLeft:'0px',left:"20px",position:"relative" }}>madman_lacy</Text>
-          <Text style={{fontSize:"4em",marginLeft:'30px',color:"whitesmoke"}}>{  data?.length} </Text>
-          <Text style={{ fontSize: "0.8em",marginLeft:'10px' }}>Songs</Text>
+          <Text
+            style={{
+              fontSize: "0.8em",
+              left: "20px",
+              position: "relative",
+         
+            }}
+          >
+            madman_lacy{"           ---"}
+          </Text>
+          
+          <Text
+            style={{ fontSize: "1em", marginLeft: "30px", color: "whitesmoke" }}
+          >
+          {'Total songs'}  {data?.length}{" "}
+          </Text>
+        
         </div>
+
         <CreateButtonContainer
           onClick={() => {
             setOpenform(!openForm);
-            setToBeUpdated(undefined)
+            setToBeUpdated(undefined);
           }}
         >
           <Text
             style={{
               fontSize: "30px",
               rotate: openForm ? "43deg" : "0deg",
-              
+
               transition: "0.4s",
             }}
           >

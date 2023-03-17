@@ -18,6 +18,7 @@ const Card: React.FC<PropsWithChildren<HeaderProps>> = ({ children }) => {
         setOpenform={setOpenform}
         openForm={openForm}
       />
+
       <Divider />
       <RightContainer>
         <div>

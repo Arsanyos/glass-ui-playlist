@@ -1,3 +1,4 @@
+import Legends from "src/componets/Legends";
 import styled from "styled-components";
 
 export const MainCardContainer = styled.div`
@@ -213,11 +214,17 @@ export const SaveButton = styled.button`
   }
 `;
 export const Bar = styled.div`
-  height: 30px;
-  border-radius:5px;
-  margin-top:10px;
-  margin-bottom:10px;
-  padding:5px;
+  height: 10px;
+  border-radius: 5px;
+  padding: 10px;
   width: ${(props: { random: string; color: string }) => props.random};
-  border: 1px solid ${(props: { random: string; color: string }) => props.color};
+  border: 0.1em solid
+    ${(props: { random: string; color: string }) => props.color};
+`;
+
+export const LegendsBarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
