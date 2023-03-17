@@ -10,8 +10,8 @@ import {
   SaveButton,
 } from "../styles/styles";
 import styles from "../styles/common.module.css";
-import { useUpdateSongMutation, useAddSongMutation } from "src/redux/music.api";
-import Loading from "./Loading";
+import { useUpdateSongMutation, useAddSongMutation } from 'src/redux/music.api';
+// import Loading from "./Loading";
 import { useState } from "react";
 export interface formValues {
   title: string | undefined;
@@ -126,7 +126,7 @@ const Form = ({ tobeUpdated }: { tobeUpdated: formValues | undefined }) => {
                   // resetForm();
                 }}
               >
-                {isLoading ? <Loading /> : "Save"}
+                {isLoading ? 'loading' : "Save"}
               </SaveButton>
             </FormContainer>
           </form>

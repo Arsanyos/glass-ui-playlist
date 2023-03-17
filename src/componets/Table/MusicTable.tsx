@@ -17,7 +17,7 @@ import {
   useTotalMusicQuery,
   useUpdateSongMutation
 } from "src/redux/music.api";
-import Loading from "../Loading";
+// import Loading from "../Loading";
 import { formValues } from "../Form";
 interface mus {
   Title: string;
@@ -49,21 +49,13 @@ const MusicTable = ({
       });
   };
   const Delete = (title: string) => {
-<<<<<<< Updated upstream
-    alert(title);
-
-    if (window.confirm("Are you sure that you want to delete that account?")) {
-      axios.post("http://localhost:5000/Removesong", {
-        title,
-=======
     deletMusic(title)
       .unwrap()
       .then(() => {
         alert("Item deleted successfully");
       })
-      .catch((error) => {
-        console.log(error);
->>>>>>> Stashed changes
+      .catch(() => {
+        console.log();
       });
   };
 
@@ -190,7 +182,7 @@ const MusicTable = ({
                           color="rgba(220,20,60,0.7)"
                           onClick={() => Delete(item._id)}
                         >
-                          {deleteLoading ? <Loading /> : "D"}
+                          {deleteLoading ? 'loading' : "D"}
                         </MenuItems>
                       </MenuContainer>
                     </div>
