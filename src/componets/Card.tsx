@@ -15,7 +15,7 @@ const Card: React.FC<PropsWithChildren<HeaderProps>> = ({ children }) => {
       <List setToBeUpdated={setToBeUpdated} setOpenform={setOpenform} openForm={openForm} />
       <Divider />
       <Stat>
-        <div>{openForm ? <Form tobeUpdated={tobeUpdated} /> : "Chart"}</div>
+        <div>{openForm ? <Form tobeUpdated={tobeUpdated} setOpenform={setOpenform} /> : "Chart"}</div>
       </Stat>
     </MainCardContainer>
   );

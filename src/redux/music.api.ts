@@ -1,6 +1,6 @@
 import { mainApi } from "./main.api";
 import { formValues } from "src/componets/Form";
-const apiWithTag = mainApi.enhanceEndpoints({ addTagTypes: ["music"] });
+const apiWithTag = mainApi.enhanceEndpoints({ addTagTypes: ["music",'de'] });
 
 export const musicApi = apiWithTag.injectEndpoints({
   endpoints: (builder) => ({
@@ -9,27 +9,28 @@ export const musicApi = apiWithTag.injectEndpoints({
     }),
     fetchMusics: builder.query({
       query: () => "/Getsong",
-      providesTags: ["music"],
+      providesTags: ["music",'de'],
     }),
     deleteMusic: builder.mutation({
       query: (title: string) => ({
         url: "/Removesong",
-        method: "post",
+        method: "POST",
         body: { title },
       }),
-      invalidatesTags: ["music"],
+      invalidatesTags: ["de"],
     }),
     updateSong: builder.mutation({
       query: (values:formValues) => ({
         url: "/Updatesong",
-        method:'put',
+        method:'POST',
         body: {values},
       }),
+      invalidatesTags: ["music"],
     }),
     addSong: builder.mutation({
       query: (values:formValues) => ({
         url: "/addsong",
-        method:'post',
+        method:'POST',
         body: {values},
       }),
        invalidatesTags: ["music"],

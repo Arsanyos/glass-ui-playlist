@@ -1,36 +1,56 @@
-import { Header } from "../styles/styles";
 import { Formik } from "formik";
+import { useAddSongMutation, useUpdateSongMutation } from "src/redux/music.api";
 import { NewMusicSchema } from "../schema/music.schema";
+import styles from "../styles/common.module.css";
 import {
-  InputFields,
-  InputLable,
-  FormControl,
   ErrorDisplay,
   FormContainer,
+  FormControl,
+  Header,
+  InputFields,
+  InputLable,
   SaveButton,
 } from "../styles/styles";
-import styles from "../styles/common.module.css";
-import { useUpdateSongMutation, useAddSongMutation } from 'src/redux/music.api';
 // import Loading from "./Loading";
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import Loading from "./Loading";
 export interface formValues {
   title: string | undefined;
   album: string | undefined;
   artist: string | undefined;
   genre: string | undefined;
 }
-const Form = ({ tobeUpdated }: { tobeUpdated: formValues | undefined }) => {
+const Form = ({
+  tobeUpdated,
+  setOpenform,
+}: {
+  tobeUpdated: formValues | undefined;
+  setOpenform: Dispatch<SetStateAction<boolean>>;
+}) => {
+  const [addMusic, { isLoading: addLoading }] = useAddSongMutation({});
+  const [updateMusic, { isLoading: updateLoading }] = useUpdateSongMutation({});
 
-  const [addMusic, { isLoading }] = useAddSongMutation({});
-
-  const handleSubmit = (values: formValues) => {
+  const handleAdd = (values: formValues) => {
     addMusic(values)
       .unwrap()
       .then(() => {
-        alert("Music added successfully");
+        toast.success("Music added successfully");
+        setOpenform(false);
       })
       .catch(() => {
-        alert("Error when adding music");
+        toast.error("Error when adding music");
+      });
+  };
+  const handleUpdate = (values: formValues) => {
+    updateMusic(values)
+      .unwrap()
+      .then(() => {
+        toast.success("Music Updated successfully");
+        setOpenform(false);
+      })
+      .catch(() => {
+        toast.error("Error when updating music");
       });
   };
   const initialValues = {
@@ -41,6 +61,7 @@ const Form = ({ tobeUpdated }: { tobeUpdated: formValues | undefined }) => {
   };
   return (
     <div>
+      {/* <ToastContainer /> */}
       <Header style={{ marginLeft: "10px", fontSize: "2em" }}>
         Add new music
       </Header>
@@ -117,16 +138,39 @@ const Form = ({ tobeUpdated }: { tobeUpdated: formValues | undefined }) => {
               </FormControl>
 
               <SaveButton
+                id="save-button"
                 className={styles.saveButton}
                 type="submit"
-                disabled={Object.keys(errors).length > 0 ? true : false}
+                // disabled={Object.keys(errors).length > 0 ? true : false}
                 onClick={(e) => {
+                  const inner: string =
+                    document.getElementById("save-button")!.innerHTML;
                   e.preventDefault();
-                  handleSubmit(values);
-                  // resetForm();
+                  if (inner === "Save") {
+                    handleAdd(values);
+                    resetForm();
+                  } else if (inner === "Update") {
+                    handleUpdate(values);
+                    resetForm();
+                  } else {
+                  }
                 }}
               >
-                {isLoading ? 'loading' : "Save"}
+                {updateLoading || addLoading ? (
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Loading />
+                  </div>
+                ) : tobeUpdated ? (
+                  "Update"
+                ) : (
+                  "Save"
+                )}
               </SaveButton>
             </FormContainer>
           </form>

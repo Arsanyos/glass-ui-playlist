@@ -73,6 +73,7 @@ export const TableData = styled.td`
   text-align: left;
   color: rgb(255, 255, 255);
   width: 200px;
+  padding:5px;
 `;
 export const ItemsContainer = styled.div`
   height: 30px;
@@ -107,11 +108,7 @@ export const CreateButtonContainer = styled.div`
   }
 `;
 export const MenuContainer = styled.div`
-  width: 50px;
-  height: 100px;
   border-radius: 18px;
-  backdrop-filter: blur(25px);
-  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   z-index:1;
   display: flex;
@@ -127,8 +124,6 @@ export const MenuItems = styled.button`
   background: transparent;
   color: whitesmoke;
   font-weight: 500;
-  backdrop-filter: blur(55px);
-  background-color: ${(props: { color: string }) => props.color};
   border: none;
   border-radius: 5px;
 
