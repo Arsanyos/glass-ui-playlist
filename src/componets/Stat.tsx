@@ -1,11 +1,5 @@
-import React, { PropsWithChildren } from "react";
-import {
-    StatsContainer
-} from "../styles/styles";
-interface HeaderProps {
-  children?: any;
-}
-const Card: React.FC<PropsWithChildren<HeaderProps>> = ({ children }) => {
-  return <StatsContainer>{children}</StatsContainer>;
+import Legends from "./Legends";
+const Stat = () => {
+  return <Legends />;
 };
-export default Card;
+export default Stat;

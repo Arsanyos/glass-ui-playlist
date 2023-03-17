@@ -27,21 +27,25 @@ const Card: React.FC<PropsWithChildren<HeaderProps>> = ({
   return (
     <PlayListContainer>
       <Header style={{ marginLeft: "10px" }}>Play List</Header>
-      <ItemsContainer>
+      <ItemsContainer style={{marginTop:'30px',}}>
         <div
           style={{
             display: "flex",
-            justifyContent: "space-evenly",
-            alignItems: "center",
+            flexDirection:"row",
+            justifyContent: "left",
+            alignItems: "left",
             height: "20px",
-            width: "180px",
+            width: "auto",
+            
+
           }}
         >
           <ProfilePic />
-          <Text style={{ fontSize: "0.8em" }}>madman_lacy  -  {  data?.length}</Text>
+          <Text style={{ fontSize: "0.8em",marginLeft:'0px',left:"20px",position:"relative" }}>madman_lacy</Text>
+          <Text style={{fontSize:"4em",marginLeft:'30px',color:"whitesmoke"}}>{  data?.length} </Text>
+          <Text style={{ fontSize: "0.8em",marginLeft:'10px' }}>Songs</Text>
         </div>
         <CreateButtonContainer
-      
           onClick={() => {
             setOpenform(!openForm);
             setToBeUpdated(undefined)
