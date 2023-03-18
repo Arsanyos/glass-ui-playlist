@@ -1,3 +1,4 @@
+import Legends from "src/componets/Legends";
 import styled from "styled-components";
 
 export const MainCardContainer = styled.div`
@@ -55,7 +56,6 @@ export const Table = styled.table`
   backdrop-filter: blur(25px);
   border-radius: 8px;
   padding: 10px;
-
 `;
 export const TableHead = styled.th`
   font-family: "Regular";
@@ -66,13 +66,14 @@ export const TableHead = styled.th`
 export const TableRow = styled.tr`
   border-radius: 10px;
   width: auto;
-  height:auto;
+  height: auto;
 `;
 export const TableData = styled.td`
   font-family: "Regular";
   text-align: left;
   color: rgb(255, 255, 255);
   width: 200px;
+  padding: 5px;
 `;
 export const ItemsContainer = styled.div`
   height: 30px;
@@ -107,13 +108,9 @@ export const CreateButtonContainer = styled.div`
   }
 `;
 export const MenuContainer = styled.div`
-  width: 50px;
-  height: 100px;
   border-radius: 18px;
-  backdrop-filter: blur(25px);
-  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
-  z-index:1;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -123,12 +120,10 @@ export const MenuContainer = styled.div`
 export const MenuItems = styled.button`
   height: 25px;
   width: auto;
-  padding:10px;
+  padding: 10px;
   background: transparent;
   color: whitesmoke;
   font-weight: 500;
-  backdrop-filter: blur(55px);
-  background-color: ${(props: { color: string }) => props.color};
   border: none;
   border-radius: 5px;
 
@@ -146,11 +141,11 @@ export const InputFields = styled.input`
   padding: 0px;
   margin: 0px;
   color: whitesmoke;
-  border-bottom: 1px solid  rgb(32,197,201,0.8) ;
+  border-bottom: 1px solid rgb(32, 197, 201, 0.8);
   background: transparent;
   :active {
     border-bottom: 3px solid white;
-    transition:0.5s;
+    transition: 0.5s;
   }
   font-family: Regular;
 `;
@@ -187,36 +182,49 @@ export const FormContainer = styled.div`
   border-radius: 8px;
   padding: 40px;
   padding-top: 20px;
-  padding-bottom:20px;
+  padding-bottom: 20px;
   margin-top: 20px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 export const SaveButton = styled.button`
   font-family: "Regular";
   height: 27px;
   width: 94px;
-  border-radius:8px;
+  border-radius: 8px;
   border: 1px solid transparent;
-  outline:0;
+  outline: 0;
   margin-top: 25px;
-  background-color:rgb(110,5,134,0.9);
-  font-size:16px;
+  background-color: rgb(110, 5, 134, 0.9);
+  font-size: 16px;
   color: whitesmoke;
   display: flex;
   justify-content: center;
   align-items: center;
-  :hover:enabled{
-    cursor:pointer;
-    color:rgb(110,5,134);
-    background:whitesmoke;
-    transition:0.3s;
+  :hover:enabled {
+    cursor: pointer;
+    color: rgb(110, 5, 134);
+    background: whitesmoke;
+    transition: 0.3s;
   }
-  :hover:disabled{
-    cursor:arrow;
+  :hover:disabled {
+    cursor: arrow;
   }
+`;
+export const Bar = styled.div`
+  height: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  width: ${(props: { random: string; color: string }) => props.random};
+  border: 0.1em solid
+    ${(props: { random: string; color: string }) => props.color};
+`;
 
+export const LegendsBarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;

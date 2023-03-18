@@ -1,24 +1,23 @@
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import {
-  TableHead,
-  TableData,
-  TableRow,
-  Table,
+  useDeleteMusicMutation,
+  useFetchMusicsQuery,
+} from "src/redux/music.api";
+import styles from "../../styles/common.module.css";
+import {
   MenuContainer,
   MenuItems,
+  Table,
+  TableData,
+  TableHead,
+  TableRow,
 } from "../../styles/styles";
-import styles from "../../styles/common.module.css";
-import { useState } from "react";
-import { useEffect } from "react";
-import axios from "../../../node_modules/axios/index";
-import React, { Dispatch, SetStateAction, useRef } from "react";
-import {
-  useFetchMusicsQuery,
-  useDeleteMusicMutation,
-  useTotalMusicQuery,
-  useUpdateSongMutation
-} from "src/redux/music.api";
 // import Loading from "../Loading";
+import { AiFillDelete } from "react-icons/ai";
+import { RxUpdate } from "react-icons/rx";
+import { ToastContainer, toast } from "react-toastify";
 import { formValues } from "../Form";
+import "react-toastify/dist/ReactToastify.css";
 interface mus {
   Title: string;
   Album: string;
@@ -28,34 +27,28 @@ interface mus {
 }
 const MusicTable = ({
   setToBeUpdated,
+  setOpenform,
 }: {
   setToBeUpdated: Dispatch<SetStateAction<formValues | undefined>>;
+  setOpenform: Dispatch<SetStateAction<boolean>>;
 }) => {
   const current = useRef({
     option: "0",
   });
   const { data } = useFetchMusicsQuery({});
-  const [updateMusic, { isLoading }] = useUpdateSongMutation({});
   const [deletMusic, { isLoading: deleteLoading }] = useDeleteMusicMutation({});
   const Update = (values: formValues) => {
     setToBeUpdated(values);
-    updateMusic(values)
-      .unwrap()
-      .then(() => {
-        alert("Item updated successfully");
-      })
-      .catch(() => {
-        console.log('Error when updateing item');
-      });
   };
-  const Delete = (title: string) => {
-    deletMusic(title)
+  const Delete = async (title: string) => {
+    await deletMusic(title)
       .unwrap()
       .then(() => {
-        alert("Item deleted successfully");
+        console.log("sdsd");
+        toast.success("Music added successfully");
       })
       .catch(() => {
-        console.log();
+        toast.error("Error when adding music");
       });
   };
 
@@ -94,6 +87,7 @@ const MusicTable = ({
         overflowX: "hidden",
       }}
     >
+      <ToastContainer />
       <Table cellPadding={"0"} cellSpacing={"0"} className="table">
         <thead>
           <TableRow
@@ -120,10 +114,17 @@ const MusicTable = ({
                     {index + 1}
                   </TableData>
                   <TableData
-                    style={{ display: "flex", flexDirection: "column" }}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignContent: "center",
+                      justifyContent: "center",
+                      width: "150px",
+                      marginTop: "22px",
+                    }}
                   >
-                    <p style={{ fontWeight: "600" }}>{item.Title}</p>
-                    <p
+                    <span style={{ fontWeight: "500" }}>{item.Title}</span>
+                    <span
                       style={{
                         fontSize: ".6em",
                         lineHeight: "10px",
@@ -132,15 +133,15 @@ const MusicTable = ({
                       }}
                     >
                       {item.Artist}
-                    </p>
+                    </span>
                   </TableData>
-                  <TableData>{item.Album}</TableData>
+                  <TableData>
+                    <span style={{ fontSize: "0.9em" }}>{item.Album}</span>
+                  </TableData>
                   <TableData>{item.Genre}</TableData>
 
                   <TableData
                     style={{
-                      fontSize: "1.5em",
-                      fontWeight: "600",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -152,41 +153,36 @@ const MusicTable = ({
                       current.current.option = item._id;
                     }}
                   >
-                    <div
-                      id={item._id}
-                      key={item._id}
+                    <MenuContainer
                       style={{
-                        display:
-                          menuOpen && current.current.option === item._id
-                            ? "block"
-                            : "none",
-                        zIndex: "2",
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        alignContent: "center",
+                        gap: "1.5em",
                       }}
                     >
-                      <MenuContainer>
-                        <MenuItems
-                          onClick={() => {
-                            const val:formValues = {
-                              title: item.Title,
-                              artist: item.Artist,
-                              album: item.Album,
-                              genre: item.Genre,
-                            };
-                            Update(val);
-                          }}
-                          color="rgba(0,255,0,0.4)"
-                        >
-                          U
-                        </MenuItems>
-                        <MenuItems
-                          color="rgba(220,20,60,0.7)"
-                          onClick={() => Delete(item._id)}
-                        >
-                          {deleteLoading ? 'loading' : "D"}
-                        </MenuItems>
-                      </MenuContainer>
-                    </div>
-                    <div style={{ position: "absolute" }}>...</div>
+                      <RxUpdate
+                        color="rgb(40,185,190)"
+                        size={"1.5em"}
+                        onClick={() => {
+                          const val: formValues = {
+                            title: item.Title,
+                            artist: item.Artist,
+                            album: item.Album,
+                            genre: item.Genre,
+                          };
+                          Update(val);
+                          setOpenform((prev) => !prev);
+                        }}
+                      />
+
+                      <AiFillDelete
+                        color="crimson"
+                        size={"1.5em"}
+                        onClick={() => Delete(item._id)}
+                      />
+                    </MenuContainer>
                   </TableData>
                 </TableRow>
               );
