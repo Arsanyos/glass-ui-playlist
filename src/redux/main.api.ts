@@ -8,7 +8,7 @@ import {
 
 import { RootState } from "./store";
 const query = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/",
+  baseUrl: "https://yoni-songs.onrender.com/",
 
   prepareHeaders: (headers: Headers, { getState }) => {
     return headers;
