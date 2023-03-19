@@ -8,19 +8,26 @@ const Legends = () => {
   const pop = data && data.filter((item: { Genre: string; }) => item.Genre === 'pop');
   const rock = data && data.filter((item: { Genre: string; }) => item.Genre === 'rock');
   const alternative = data && data.filter((item: { Genre: string; }) => item.Genre === 'alternative');
-  const RnB = data && data.filter((item: { Genre: string; }) => item.Genre === 'R&B');
-  const hipHop = data && data.filter((item: { Genre: string; }) => item.Genre === 'hip-hop');
+  const RnB = data && data.filter((item: { Genre: string; }) => item.Genre === 'RnB');
+  const hipHop = data && data.filter((item: { Genre: string; }) => item.Genre === 'hipHop');
   const classical = data && data.filter((item: { Genre: string; }) => item.Genre === 'classical');
 
+  var p = pop && pop.length ;
+  var r = rock && rock.length;
+  var al = alternative && alternative.length;
+  var rnb = RnB && RnB.length;
+  var hi = hipHop && hipHop.length;
+  var cl = classical && classical.length;
+  const sum = (p+r+al+rnb+hi+cl);
   
-  const popperc = (pop && pop.length / data.length)*100;
-  const rockperc = (rock && rock.length / data.length) * 100;
-  const alternativeperc = (alternative && alternative.length / data.length) * 100;
-  const RnBperc = (RnB && RnB.length / data.length) * 100;
-  const hipHopperc = (hipHop && hipHop.length / data.length) * 100;
-  const classicalperc = (classical && classical.length / data.length) * 100;
+  const popperc = (pop && pop.length / sum)*100;
+  const rockperc = (rock && rock.length / sum) * 100;
+  const alternativeperc = (alternative && alternative.length / sum) * 100;
+  const RnBperc = (RnB && RnB.length / sum) * 100;
+  const hipHopperc = (hipHop && hipHop.length / sum) * 100;
+  const classicalperc = (classical && classical.length / sum) * 100;
   console.log(popperc,rockperc,alternativeperc,RnBperc,hipHopperc,classicalperc);
-  console.log(pop && pop.length / data.length);
+  console.log("data", sum);
   
   return (
     <>
@@ -46,11 +53,11 @@ const Legends = () => {
             <Text
               style={{ fontWeight: "200", fontSize: "1em", color: "yellow" }}
             >
-              Hip-hop
+              Pop
             </Text>
           </Bar>
           <Text style={{ fontWeight: "200", fontSize: "1em", color: "yellow" }}>
-            30%
+            {popperc+"%"}
           </Text>
         </LegendsBarContainer>
         <LegendsBarContainer>
@@ -70,13 +77,13 @@ const Legends = () => {
                 color: "whitesmoke",
               }}
             >
-              Regaee
+              Rock
             </Text>
           </Bar>
           <Text
             style={{ fontWeight: "200", fontSize: "1em", color: "whitesmoke" }}
           >
-            30%
+            {rockperc+"%"}
           </Text>
         </LegendsBarContainer>
         <LegendsBarContainer>
@@ -88,13 +95,14 @@ const Legends = () => {
             <Text
               style={{ fontWeight: "200", fontSize: "1em", color: "crimson" }}
             >
-              Amharic
+              alternative
             </Text>
           </Bar>
           <Text
             style={{ fontWeight: "200", fontSize: "1em", color: "crimson" }}
           >
-            80%
+            {alternativeperc+"%"}
+            
           </Text>
         </LegendsBarContainer>
         <LegendsBarContainer>
@@ -106,11 +114,43 @@ const Legends = () => {
             <Text
               style={{ fontWeight: "200", fontSize: "1em", color: "white" }}
             >
-              Rock & Roll
+              RnB
             </Text>
           </Bar>
           <Text style={{ fontWeight: "200", fontSize: "1em", color: "white" }}>
-            80%
+            {RnBperc+"%"}
+          </Text>
+        </LegendsBarContainer>
+        <LegendsBarContainer>
+          <Bar
+            random={"180px"}
+            color="rgb(34,199,204)"
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <Text
+              style={{ fontWeight: "200", fontSize: "1em", color: "white" }}
+            >
+              hipHop
+            </Text>
+          </Bar>
+          <Text style={{ fontWeight: "200", fontSize: "1em", color: "white" }}>
+            {hipHopperc+"%"}
+          </Text>
+        </LegendsBarContainer>
+        <LegendsBarContainer>
+          <Bar
+            random={"180px"}
+            color="rgb(34,199,204)"
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <Text
+              style={{ fontWeight: "200", fontSize: "1em", color: "white" }}
+            >
+              classical
+            </Text>
+          </Bar>
+          <Text style={{ fontWeight: "200", fontSize: "1em", color: "white" }}>
+            {classicalperc + "%"}
           </Text>
         </LegendsBarContainer>
       </div>
