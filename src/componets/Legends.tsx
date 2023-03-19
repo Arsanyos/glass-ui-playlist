@@ -1,39 +1,57 @@
 import { Text, LegendsBarContainer, Bar } from "src/styles/styles";
-import {
-  useFetchMusicsQuery,
-} from "src/redux/music.api";
+import { useFetchMusicsQuery } from "src/redux/music.api";
 const Legends = () => {
-
   const { data } = useFetchMusicsQuery({});
-  const pop = data && data.filter((item: { Genre: string; }) => item.Genre === 'pop');
-  const rock = data && data.filter((item: { Genre: string; }) => item.Genre === 'rock');
-  const alternative = data && data.filter((item: { Genre: string; }) => item.Genre === 'alternative');
-  const RnB = data && data.filter((item: { Genre: string; }) => item.Genre === 'RnB');
-  const hipHop = data && data.filter((item: { Genre: string; }) => item.Genre === 'hipHop');
-  const classical = data && data.filter((item: { Genre: string; }) => item.Genre === 'classical');
+  const pop =
+    data && data.filter((item: { Genre: string }) => item.Genre === "pop");
+  const rock =
+    data && data.filter((item: { Genre: string }) => item.Genre === "rock");
+  const alternative =
+    data &&
+    data.filter((item: { Genre: string }) => item.Genre === "alternative");
+  const RnB =
+    data && data.filter((item: { Genre: string }) => item.Genre === "RnB");
+  const hipHop =
+    data && data.filter((item: { Genre: string }) => item.Genre === "hipHop");
+  const classical =
+    data &&
+    data.filter((item: { Genre: string }) => item.Genre === "classical");
 
-  var p = pop && pop.length ;
+  var p = pop && pop.length;
   var r = rock && rock.length;
   var al = alternative && alternative.length;
   var rnb = RnB && RnB.length;
   var hi = hipHop && hipHop.length;
   var cl = classical && classical.length;
-  const sum = (p+r+al+rnb+hi+cl);
-  
-  const popperc = (pop && pop.length / sum)*100;
+  const sum = p + r + al + rnb + hi + cl;
+
+  const popperc = (pop && pop.length / sum) * 100;
   const rockperc = (rock && rock.length / sum) * 100;
   const alternativeperc = (alternative && alternative.length / sum) * 100;
   const RnBperc = (RnB && RnB.length / sum) * 100;
   const hipHopperc = (hipHop && hipHop.length / sum) * 100;
   const classicalperc = (classical && classical.length / sum) * 100;
-  console.log(popperc,rockperc,alternativeperc,RnBperc,hipHopperc,classicalperc);
+  console.log(
+    popperc,
+    rockperc,
+    alternativeperc,
+    RnBperc,
+    hipHopperc,
+    classicalperc
+  );
   console.log("data", sum);
-  
+
   return (
-    <>
-      <Text style={{ fontWeight: "200", fontSize: "1.3em",marginLeft:'10px' }}>Legend</Text>
+    <div>
+      <Text
+        style={{ fontWeight: "200", fontSize: "1.3em", marginLeft: "10px" }}
+      >
+        Legend
+      </Text>
       <div
         style={{
+          position: "static",
+          height: "200px",
           display: "flex",
           flexDirection: "column",
           gap: "0.8em",
@@ -41,7 +59,7 @@ const Legends = () => {
           backgroundColor: "rgba(0, 0, 0, 0.2)",
           borderRadius: "10px ",
           padding: "10px 10px",
-          boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+          overflow: "scroll",
         }}
       >
         <LegendsBarContainer>
@@ -57,12 +75,12 @@ const Legends = () => {
             </Text>
           </Bar>
           <Text style={{ fontWeight: "200", fontSize: "1em", color: "yellow" }}>
-            {popperc+"%"}
+             { Math.trunc(popperc) + "%"}
           </Text>
         </LegendsBarContainer>
         <LegendsBarContainer>
           <Bar
-            random={"80px"}
+            random={"50px"}
             color="#9E9764"
             style={{
               display: "flex",
@@ -83,17 +101,17 @@ const Legends = () => {
           <Text
             style={{ fontWeight: "200", fontSize: "1em", color: "whitesmoke" }}
           >
-            {rockperc+"%"}
+            { Math.trunc(rockperc) + "%"}
           </Text>
         </LegendsBarContainer>
         <LegendsBarContainer>
           <Bar
-            random={"250px"}
+            random={"50px"}
             color=" #AF2B1E"
-            style={{ display: "flex", alignItems: "center" }}
+            style={{ display: "flex", alignItems: "center",width:"auto" }}
           >
             <Text
-              style={{ fontWeight: "200", fontSize: "1em", color: "crimson" }}
+              style={{ fontWeight: "200", fontSize: "1em", color: "crimson",width:"auto" }}
             >
               alternative
             </Text>
@@ -101,13 +119,12 @@ const Legends = () => {
           <Text
             style={{ fontWeight: "200", fontSize: "1em", color: "crimson" }}
           >
-            {alternativeperc+"%"}
-            
+            { Math.trunc(alternativeperc) + "%"}
           </Text>
         </LegendsBarContainer>
         <LegendsBarContainer>
           <Bar
-            random={"180px"}
+            random={"50px"}
             color="rgb(34,199,204)"
             style={{ display: "flex", alignItems: "center" }}
           >
@@ -118,12 +135,12 @@ const Legends = () => {
             </Text>
           </Bar>
           <Text style={{ fontWeight: "200", fontSize: "1em", color: "white" }}>
-            {RnBperc+"%"}
+            { Math.trunc(RnBperc) + "%"}
           </Text>
         </LegendsBarContainer>
         <LegendsBarContainer>
           <Bar
-            random={"180px"}
+            random={"50px"}
             color="rgb(34,199,204)"
             style={{ display: "flex", alignItems: "center" }}
           >
@@ -134,12 +151,12 @@ const Legends = () => {
             </Text>
           </Bar>
           <Text style={{ fontWeight: "200", fontSize: "1em", color: "white" }}>
-            {hipHopperc+"%"}
+            { Math.trunc(hipHopperc) + "%"}
           </Text>
         </LegendsBarContainer>
         <LegendsBarContainer>
           <Bar
-            random={"180px"}
+            random={"50px"}
             color="rgb(34,199,204)"
             style={{ display: "flex", alignItems: "center" }}
           >
@@ -150,11 +167,11 @@ const Legends = () => {
             </Text>
           </Bar>
           <Text style={{ fontWeight: "200", fontSize: "1em", color: "white" }}>
-            {classicalperc + "%"}
+            { Math.trunc(classicalperc) + "%"}
           </Text>
         </LegendsBarContainer>
       </div>
-    </>
+    </div>
   );
 };
 export default Legends;

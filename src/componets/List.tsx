@@ -1,4 +1,9 @@
-import React, { Dispatch, PropsWithChildren, SetStateAction } from "react";
+import React, {
+  Dispatch,
+  PropsWithChildren,
+  SetStateAction,
+  useEffect,
+} from "react";
 import { useFetchMusicsQuery } from "src/redux/music.api";
 import {
   CreateButtonContainer,
@@ -10,6 +15,10 @@ import {
 } from "../styles/styles";
 import { formValues } from "./Form";
 import MusicTable from "./Table/MusicTable";
+import { setTotal } from "src/redux/music.slice";
+import { selectMusicTotal } from "src/redux/music.slice";
+import { useAppDispatch } from "src/redux/hooks";
+import { useAppSelector } from "src/redux/hooks";
 interface HeaderProps {
   children?: any;
   setOpenform: Dispatch<SetStateAction<boolean>>;
@@ -22,7 +31,12 @@ const Card: React.FC<PropsWithChildren<HeaderProps>> = ({
   openForm,
   setToBeUpdated,
 }) => {
+  const dispatch = useAppDispatch();
+  const musicTotal = useAppSelector(selectMusicTotal);
   const { data } = useFetchMusicsQuery({});
+  useEffect(() => {
+    dispatch(setTotal({ total: data?.length }));
+  }, [data]);
   return (
     <PlayListContainer>
       <Header style={{ marginLeft: "10px" }}>Play List</Header>
@@ -43,18 +57,16 @@ const Card: React.FC<PropsWithChildren<HeaderProps>> = ({
               fontSize: "0.8em",
               left: "20px",
               position: "relative",
-         
             }}
           >
             madman_lacy{"           ---"}
           </Text>
-          
+
           <Text
             style={{ fontSize: "1em", marginLeft: "30px", color: "whitesmoke" }}
           >
-          {'Total songs'}  {data?.length}{" "}
+            {"Total songs"} {musicTotal}{" "}
           </Text>
-        
         </div>
 
         <CreateButtonContainer

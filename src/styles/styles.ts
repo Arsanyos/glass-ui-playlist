@@ -222,9 +222,10 @@ export const Bar = styled.div`
     ${(props: { random: string; color: string }) => props.color};
 `;
 
-export const LegendsBarContainer = styled.div`
+export const LegendsBarContainer = styled.span`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  
 `;
