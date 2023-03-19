@@ -27,6 +27,9 @@ export const musicApi = apiWithTag.injectEndpoints({
       }),
       invalidatesTags: ["music"],
     }),
+    statSong: builder.query({
+      query: () => "/genre",
+    }),
     addSong: builder.mutation({
       query: (values:formValues) => ({
         url: "/addsong",
@@ -41,6 +44,7 @@ export const {
   useFetchMusicsQuery,
   useDeleteMusicMutation,
   useTotalMusicQuery,
+  useStatSongQuery,
   useUpdateSongMutation,
   useAddSongMutation
 } = musicApi;

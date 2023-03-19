@@ -1,6 +1,27 @@
 import { Text, LegendsBarContainer, Bar } from "src/styles/styles";
-
+import {
+  useFetchMusicsQuery,
+} from "src/redux/music.api";
 const Legends = () => {
+
+  const { data } = useFetchMusicsQuery({});
+  const pop = data && data.filter((item: { Genre: string; }) => item.Genre === 'pop');
+  const rock = data && data.filter((item: { Genre: string; }) => item.Genre === 'rock');
+  const alternative = data && data.filter((item: { Genre: string; }) => item.Genre === 'alternative');
+  const RnB = data && data.filter((item: { Genre: string; }) => item.Genre === 'R&B');
+  const hipHop = data && data.filter((item: { Genre: string; }) => item.Genre === 'hip-hop');
+  const classical = data && data.filter((item: { Genre: string; }) => item.Genre === 'classical');
+
+  
+  const popperc = (pop && pop.length / data.length)*100;
+  const rockperc = (rock && rock.length / data.length) * 100;
+  const alternativeperc = (alternative && alternative.length / data.length) * 100;
+  const RnBperc = (RnB && RnB.length / data.length) * 100;
+  const hipHopperc = (hipHop && hipHop.length / data.length) * 100;
+  const classicalperc = (classical && classical.length / data.length) * 100;
+  console.log(popperc,rockperc,alternativeperc,RnBperc,hipHopperc,classicalperc);
+  console.log(pop && pop.length / data.length);
+  
   return (
     <>
       <Text style={{ fontWeight: "200", fontSize: "1.3em",marginLeft:'10px' }}>Legend</Text>
