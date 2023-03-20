@@ -18,6 +18,7 @@ export const musicApi = apiWithTag.injectEndpoints({
         body: { title },
       }),
       invalidatesTags: ["de"],
+      // window.location.reload(),
     }),
     updateSong: builder.mutation({
       query: (values:formValues) => ({

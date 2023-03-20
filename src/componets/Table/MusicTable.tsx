@@ -41,16 +41,14 @@ const MusicTable = ({
   const Update = (values: formValues) => {
     setToBeUpdated(values);
   };
-  const Delete = async (title: string) => {
-    await deletMusic(title)
-      .unwrap()
-      .then(() => {
-        console.log("sdsd");
-        toast.success("Music added successfully");
-      })
-      .catch(() => {
-        toast.error("Error when adding music");
-      });
+  const Delete = (title: string) => {
+    deletMusic(title).then(() => {
+      console.log("sdsd");
+      toast.success("Music de successfully");
+    }).catch(() => {
+      toast.error("Error when adding music");
+    });
+    window.location.reload()
   };
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -77,7 +75,7 @@ const MusicTable = ({
     },
   ];
   useEffect(() => {
-    console.log("dataaaa",data);
+    console.log("dataaaa", data);
   }, [data]);
   return (
     <div
