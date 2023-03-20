@@ -10,6 +10,7 @@ import {
   InputFields,
   InputLable,
   SaveButton,
+  SelectField,
 } from "../styles/styles";
 // import Loading from "./Loading";
 import { Dispatch, SetStateAction } from "react";
@@ -123,8 +124,7 @@ const Form = ({
               </FormControl>
               <FormControl>
                 <InputLable>Genre</InputLable>
-                <InputFields
-                  type="text"
+                <SelectField
                   name="genre"
                   onBlur={handleBlur}
                   onChange={handleChange}
@@ -133,7 +133,14 @@ const Form = ({
                     padding: "0px",
                     margin: "0px",
                   }}
-                />
+                >
+                  <option>pop</option>
+                  <option>rock</option>
+                  <option>alternative</option>
+                  <option>RnB</option>
+                  <option>hipHop</option>
+                  <option>classical</option>
+                  </SelectField>
                 {touched.genre && <ErrorDisplay>{errors.genre}</ErrorDisplay>}
               </FormControl>
 

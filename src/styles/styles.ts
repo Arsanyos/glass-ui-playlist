@@ -140,8 +140,8 @@ export const InputFields = styled.input`
   border: none;
   padding: 0px;
   margin: 0px;
-  color: whitesmoke;
-  border-bottom: 1px solid rgb(32, 197, 201, 0.8);
+  color: rgb(32, 197, 201, 0.8);
+  border-bottom: 1px solid white;
   background: transparent;
   :active {
     border-bottom: 3px solid white;
@@ -229,3 +229,18 @@ export const LegendsBarContainer = styled.span`
   align-items: center;
   
 `;
+export const SelectField = styled.select`
+height: 20px;
+outline: 0;
+border: none;
+padding: 0px;
+margin: 0px;
+color:rgb(32, 197, 201, 0.8);
+border-bottom: 1px solid white;
+background: transparent;
+:active {
+  border-bottom: 3px solid white;
+  transition: 0.5s;
+}
+font-family: Regular;
+`
