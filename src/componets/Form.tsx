@@ -17,6 +17,7 @@ import { Dispatch, SetStateAction } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import Loading from "./Loading";
 export interface formValues {
+  id: string | undefined;
   title: string | undefined;
   album: string | undefined;
   artist: string | undefined;
@@ -44,6 +45,8 @@ const Form = ({
       });
   };
   const handleUpdate = (values: formValues) => {
+    console.log(values);
+    
     updateMusic(values)
       .unwrap()
       .then(() => {
@@ -55,6 +58,7 @@ const Form = ({
       });
   };
   const initialValues = {
+    id: tobeUpdated?.id,
     title: tobeUpdated?.title,
     artist: tobeUpdated?.artist,
     album: tobeUpdated?.album,
@@ -134,6 +138,7 @@ const Form = ({
                     margin: "0px",
                   }}
                 >
+                  <option selected disabled></option>
                   <option>pop</option>
                   <option>rock</option>
                   <option>alternative</option>

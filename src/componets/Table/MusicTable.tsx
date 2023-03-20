@@ -19,11 +19,12 @@ import { ToastContainer, toast } from "react-toastify";
 import { formValues } from "../Form";
 import "react-toastify/dist/ReactToastify.css";
 interface mus {
+
+  _id: string;
   Title: string;
   Album: string;
   Artist: string;
   Genre: string;
-  _id: string;
 }
 const MusicTable = ({
   setToBeUpdated,
@@ -76,7 +77,7 @@ const MusicTable = ({
     },
   ];
   useEffect(() => {
-    console.log(data);
+    console.log("dataaaa",data);
   }, [data]);
   return (
     <div
@@ -167,6 +168,7 @@ const MusicTable = ({
                         size={"1.5em"}
                         onClick={() => {
                           const val: formValues = {
+                            id: item._id,
                             title: item.Title,
                             artist: item.Artist,
                             album: item.Album,
