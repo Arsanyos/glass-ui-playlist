@@ -142,7 +142,7 @@ export const InputFields = styled.input`
   outline: 0;
   border: none;
   padding: 0px;
-  margin: 0px;
+  margin: 5px;
   color: whitesmoke;
   border-bottom: 1px solid  rgb(32,197,201,0.8) ;
   background: transparent;
